@@ -4,5 +4,3 @@ bibliotecas usada
 
 -pywebview
 -pyodbc
-*pywebview
-*pyodbc
