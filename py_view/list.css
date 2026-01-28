@@ -1,0 +1,346 @@
+:root {
+    /* fundo escuro moderno */
+    --background-white: #0e0e0e69;
+    /* branco suave */
+    --azul-back: #2a2d3e;
+    /* azul grafite */
+    --azul-front: #24293f;
+    /* azul mais claro translúcido */
+    --border-color: rgba(255, 255, 255, 0.1);
+    /* borda discreta */
+    --color-font: #e0e0e0;
+    /* cinza claro para texto */
+    --color-font2: #e0e0e0;
+    /* cinza escuro para títulos */
+    --color-font3: #e0e0e0;
+    ;
+    /* cinza médio */
+    --cert-background: #24293f;
+    /* fundo dos cards em azul grafite */
+}
+
+
+
+* {
+    background-color: var(--background);
+    width: auto;
+    font-family: Arial, Helvetica, sans-serif;
+    color: var(--color-font);
+}
+
+html {
+  font-size: 16px; /* padrão desktop */
+}
+
+@media (max-width: 1200px) {
+  html { font-size: 15px; }
+}
+@media (max-width: 992px) {
+  html { font-size: 14px; }
+}
+@media (max-width: 768px) {
+  div.valor,
+  .cert .top,
+  .cert .bottom,
+  .bloco-total p {
+    font-size: 0.75rem;
+  }
+  .bloco-titulo h2 {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 576px) {
+  html { font-size: 12px; }
+}
+
+
+h3,
+h1,
+h2,
+p {
+    background-color: transparent;
+}
+
+h1 { font-size: 2rem; }
+h2 { font-size: 1.5rem; }
+h3 { font-size: 1.2rem; }
+p  { font-size: 1rem; }
+
+
+html,
+body {
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    /* impede que o conteúdo ultrapasse */
+    ;
+}
+
+body {
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    min-height: 100vh;
+}
+
+div.content {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    background-color: var(--azul-front);
+    width: 100%;
+}
+
+
+
+div.search {
+    padding: 10px;
+    background-color: var(--background-white);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 80%;
+    height: 100vh;
+    overflow-y: auto;
+    overflow-x: scroll;
+}
+
+
+
+div.top {
+    margin-top: auto;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: transparent;
+    width: 95%;
+    height: 35px;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+div.title {
+    padding: 10px;
+    background-color: transparent;
+    color: var(--color-font2);
+    font-size: 0.85rem;
+}
+
+div.certificados {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: transparent;
+    overflow-y: auto;
+    overflow-x: scroll;
+}
+
+.cert {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: var(--cert-background);
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    margin: 10px 0;
+    padding: 10px;
+    width: 95%;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.cert:hover {
+    transform: translateY(-5px);
+    /* levanta o card */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+    /* sombra mais forte */
+    border-color: rgba(255, 255, 255, 0.2);
+    /* borda mais visível */
+}
+
+.cert .top {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.cert .bottom {
+    background-color: transparent;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 40px 0 40px;
+}
+
+.cert .icon {
+    background-color: transparent;
+    width: 20px;
+    height: 20px;
+}
+
+.cert .excluir {
+     background-color: #9b59b6;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 6px 12px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.cert .excluir:hover {
+    background-color: #8e44ad;
+}
+
+.loading {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    color: #fff;
+    text-align: center;
+    padding-top: 20%;
+    z-index: 9999;
+}
+
+.spinner {
+    border: 6px solid #f3f3f3;
+    border-top: 6px solid #3498db;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    margin: 0 auto 15px auto;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+div.valor {
+    background-color: transparent;
+    color: var(--color-font3);
+    font-size: 0.85 rem;
+    width: 18%;
+    text-align: center;
+    text-transform: lowercase;
+}
+
+.valor.valido {
+    background-color: #00c896;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.valor.expirado {
+    background-color: #ff4d4f;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.valor.a_expirar {
+    background-color: #ffa940;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+div.blocos {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 95%;
+    margin: 20px auto;
+    background-color: transparent;
+
+}
+
+div.bloco-total {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    font-size: 1 rem;
+    color: var(--color-font3);
+    font-weight: 700;
+    background-color: var(--cert-background);
+    width: 15%;
+    min-width: 150px;
+    border-radius: 5px;
+    border: 1px solid var(--border-color);
+    padding: 20px;
+    margin: 5px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.bloco-total p {
+    margin: 0;
+    margin-bottom: 10px;
+    font-size: 0.9rem; /* antes: 14px */
+    color: var(--color-font2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.bloco-total:hover {
+    transform: scale(1.05);
+    /* aumenta levemente */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.bloco-titulo {
+    background-color: transparent;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.bloco-titulo h2 {
+    color: var(--color-font2);
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+div.cards-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+    background-color: transparent;
+}
+
+.btn_cert {
+  all: unset;   /* remove todas as propriedades herdadas */
+  display: block; /* volta a se comportar como div */
+  cursor: pointer; /* mantém clicável */
+}
+

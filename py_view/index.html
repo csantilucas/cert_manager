@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Certificados</title>
+
+    <link rel="stylesheet" href="list.css">
+    <link rel="stylesheet" href="install.css">
+    <link rel="stylesheet" href="config.css">
+    <link rel="stylesheet" href="menu.css">
+
+
+</head>
+
+<body>
+
+    <div class="content">
+
+
+        <div class="menu">
+            <button id="config_sql"> <img id="config_ico" src="./icons/config.svg" alt="config"></button>
+            <button class="title_menu" id="atualizarBtn">Certificados Instalados</button>
+            <button class="title_menu">Instalar um Certificado</button>
+            <button class="title_menu">Converter</button>
+            <button class="title_menu">Certificado por Empresa</button>
+            <link rel="stylesheet" href="emp.css">
+        </div>
+
+
+        <div class="install" id="install" style="display: none;">
+            <div id="installResult"></div>
+        </div>
+
+        <div class="emp-certs" id="emp-certs" style="display: none;">
+
+
+            <p class="titulo-input">Selecione a Base de Dados:</p>
+
+            <div class="row-base">
+
+                <select id="bases" class="bases">
+
+                    <option value="" disabled selected>Carregando bancos...</option>
+
+                </select>
+
+                <button id="btnRefreshBase" title="Atualizar Lista">↻</button>
+
+            </div>
+
+            <p>Modifique os certificados da empresa</p>
+            <div class="mod_emp">
+                <select id="empresa" class="bases">
+                    <option value="" disabled selected>Selecione uma empresa...</option>
+                </select>
+
+                <select name="cert_nfe" id="select_nfe" class="bases">
+                    <option value="" disabled selected>NF-e</option>
+                </select>
+
+                <select name="cert_nfce" id="select_nfce" class="bases">
+                    <option value="" disabled selected>NFc-e</option>
+                </select>
+
+                <select name="cert_cte" id="select_cte" class="bases">
+                    <option value="" disabled selected>CT-e</option>
+                </select>
+
+                <button class="btn">ENVIAR PARA O BANCO</button>
+            </div>
+
+
+            <br>
+            <table class="certs_emp">
+                <thead>
+                    <tr>
+                        <th style="width: 40%;">Empresa</th>
+                        <th>Certificado</th>
+                        <th>Validade</th>
+                    </tr>
+                </thead>
+                <tbody id="lista_empresas">
+                </tbody>
+            </table>
+
+        </div>
+
+        <div class="all">
+            <div class="config">
+                <button id="sair"><img src="./icons/close.svg" alt=""></button>
+                <p>Configuração de Conexão SQL Server</p>
+                <input id="servidor" type="text" placeholder="servidor" value="LOCALHOST">
+                <input id="instancia" type="text" placeholder="instancia" value="SQLSERVER">
+                <input id="user" type="text" placeholder="usuario" value="sa">
+                <input id="password" type="password" placeholder="senha" value="112658n">
+                <button id="conectar">conectar</button>
+                <p id="resultado_conexao"></p>
+            </div>
+        </div>
+
+        <div class="search" id="search" style="display: none;">
+
+            <div id="loading" class="loading">
+                <div class="spinner"></div>
+                <p>Atualizando certificados...</p>
+            </div>
+
+
+
+            <div class="blocos">
+
+            </div>
+
+
+            <div class="certificados">
+
+            </div>
+
+
+
+        </div>
+
+        <script type="module" src="list.js"></script>
+
+
+    </div>
+
+
+
+
+</body>
+
+</html>

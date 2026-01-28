@@ -1,0 +1,153 @@
+/* --- VARIÁVEIS DE COR --- */
+:root {
+    --color-btn: #9b59b6;
+    --color-btn-hover: #8e44ad;
+    --color-background: #1e1e2f;
+    --color-input-bg: #2a2a40;
+    --color-text-light: #ffffff;
+    --color-text-muted: #b3b3b3;
+}
+
+/* --- RESET BÁSICO --- */
+* {
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* --- OVERLAY (Fundo Escuro) --- */
+/* Essa div cobre a tela toda */
+.all {
+    display: none; /* Começa invisível (controlado pelo JS) */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.6); /* Mais escuro para foco */
+    backdrop-filter: blur(3px); /* Desfoque suave no fundo (efeito moderno) */
+    z-index: 1000; /* Garante que fique acima de tudo */
+}
+
+/* --- MODAL (A caixa) --- */
+.config {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Centralização perfeita */
+    
+    background-color: var(--color-background);
+    padding: 40px;
+    border-radius: 16px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+    
+    width: 90%;
+    max-width: 450px;
+    
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    color: var(--color-text-light);
+    
+    /* Necessário para posicionar o botão fechar */
+    position: relative; 
+}
+
+/* --- BOTÃO FECHAR (X) --- */
+#sair {
+    position: absolute; /* Flutua sobre o modal */
+    top: 15px;
+    right: 15px;
+    
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: background-color 0.2s;
+}
+
+#sair img {
+    width: 20px;
+    height: 20px;
+
+}
+
+#sair:hover {
+    background-color: rgba(255, 255, 255, 0.1); /* Efeito suave ao passar o mouse */
+}
+
+/* --- TÍTULO --- */
+.config > p:first-of-type {
+    font-size: 1.4rem;
+    font-weight: 600;
+    text-align: center;
+    margin-top: 10px; /* Espaço extra por causa do botão fechar */
+    margin-bottom: 10px;
+    color: var(--color-text-light);
+}
+
+/* --- INPUTS --- */
+.config input {
+    width: 100%;
+    padding: 14px;
+    border-radius: 8px;
+    border: 2px solid transparent;
+    background-color: var(--color-input-bg);
+    color: var(--color-text-light);
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.3s, background-color 0.3s;
+}
+
+.config input::placeholder {
+    color: var(--color-text-muted);
+}
+
+.config input:focus {
+    border-color: var(--color-btn);
+    background-color: #32324a;
+}
+
+/* Removi o padding no hover pois fazia a tela tremer */
+.config input:hover {
+    background-color: #32324a; 
+}
+
+/* --- BOTÃO CONECTAR --- */
+#conectar {
+    width: 100%;
+    padding: 14px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 8px;
+    background-color: var(--color-btn);
+    color: white; /* Texto branco para contraste */
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.1s;
+}
+
+#conectar:hover {
+    background-color: var(--color-btn-hover);
+    /* Removi o padding extra aqui também */
+}
+
+#conectar:active {
+    transform: scale(0.98); /* Efeito de clique */
+}
+
+/* --- MENSAGEM DE RESULTADO --- */
+#resultado_conexao {
+    text-align: center;
+    font-size: 0.9rem;
+    min-height: 20px;
+    font-weight: 500;
+    margin-top: 5px;
+}

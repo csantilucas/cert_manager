@@ -1,0 +1,212 @@
+/* =========================================
+   VARIÁVEIS (Caso ainda não estejam importadas)
+   ========================================= */
+:root {
+    --color-btn: #9b59b6;          /* Roxo Principal */
+    --color-btn-hover: #8e44ad;    /* Roxo Escuro */
+    --color-background: #1e1e2f;   /* Fundo Geral */
+    --color-input-bg: #2a2a40;     /* Fundo de Inputs/Tabelas */
+    --color-text-light: #ffffff;   /* Texto Branco */
+    --color-text-muted: #b3b3b3;   /* Texto Cinza */
+    --border-radius: 8px;
+}
+
+/* =========================================
+   CONTAINER PRINCIPAL
+   ========================================= */
+.emp-certs {
+    padding: 20px;
+    width: 100%;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+/* Título acima do select */
+.titulo-input {
+    color: var(--color-text-light);
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+    font-weight: 500;
+}
+
+/* =========================================
+   ÁREA DO DROPDOWN (SELECT + BOTÃO)
+   ========================================= */
+.row-base {
+    display: flex;       /* Alinha um ao lado do outro */
+    align-items: center; /* Centraliza verticalmente */
+    gap: 10px;           /* Espaço entre o select e o botão */
+    margin-bottom: 25px; /* Espaço antes da tabela */
+}
+
+/* Estilo do Select (Parecido com Input) */
+.bases {
+    flex-grow: 1; /* Ocupa todo o espaço disponível */
+    padding: 12px 15px;
+    background-color: var(--color-input-bg);
+    color: var(--color-text-light);
+    border: 2px solid transparent; /* Borda invisível para manter tamanho */
+    border-radius: var(--border-radius);
+    font-size: 1rem;
+    outline: none;
+    cursor: pointer;
+    transition: border-color 0.3s ease;
+    font-size:smaller;
+}
+
+/* Seta do select (ajuste fino para navegadores) */
+.bases option {
+    background-color: var(--color-background);
+    color: var(--color-text-light);
+}
+
+.bases:focus, .bases:hover {
+    border-color: var(--color-btn); /* Borda roxa ao focar */
+}
+
+/* Botão de Refresh (Símbolo de recarregar) */
+#btnRefreshBase {
+    width: 46px; /* Largura fixa */
+    height: 46px; /* Altura igual à do select para alinhar */
+    background-color: transparent;
+    border: 2px solid var(--color-btn);
+    border-radius: var(--border-radius);
+    color: var(--color-btn);
+    font-size: 1.5rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    padding-bottom: 3px; /* Pequeno ajuste visual do ícone */
+}
+
+#btnRefreshBase:hover {
+    background-color: var(--color-btn);
+    color: var(--color-text-light);
+    transform: rotate(180deg); /* Efeito legal de girar ao passar o mouse */
+}
+
+/* =========================================
+   TABELA (MODERNA)
+   ========================================= */
+/* Container da Tabela (Para permitir rolagem) */
+.table-container {
+    max-height: 400px; /* Altura máxima antes de aparecer o scroll */
+    overflow-y: auto;  /* Habilita rolagem vertical */
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    background-color: var(--color-input-bg);
+    margin-top: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* A Tabela em si */
+.certs_emp {
+    width: 100%;
+    border-collapse: collapse; /* Tira os espaços entre as bordas */
+    font-size: 0.95rem; 
+    
+}
+
+/* --- CABEÇALHO --- */
+.certs_emp thead th {
+    background-color: var(--color-btn); /* Roxo */
+    color: white;
+    padding: 16px;
+    text-align: left;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    
+    
+    
+    
+    /* Faz o cabeçalho ficar fixo no topo ao rolar */
+    position: sticky; 
+    top: 0;
+    z-index: 2; /* Fica acima das linhas */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+/* --- LINHAS E CÉLULAS --- */
+.certs_emp tbody td {
+    padding: 14px 16px;
+    color: #d1d1e0; /* Branco gelo suave */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Efeito Zebra (Linhas pares com cor diferente) */
+.certs_emp tbody tr:nth-child(even) {
+    background-color: rgba(255, 255, 255, 0.02);
+}
+
+/* Efeito Hover (Ao passar o mouse) */
+.certs_emp tbody tr:hover {
+    background-color: rgba(155, 89, 182, 0.15); /* Roxo bem transparente */
+    transition: background-color 0.2s ease;
+}
+
+/* --- BADGES DE STATUS (As "Pílulas") --- */
+.status-badge {
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    display: inline-block;
+    min-width: 80px;
+    text-align: center;
+}
+
+/* Estilo para Válido (Verde) */
+.status-ok {
+    background-color: rgba(46, 204, 113, 0.2); /* Fundo verde transparente */
+    color: #2ecc71; /* Texto verde neon */
+    border: 1px solid rgba(46, 204, 113, 0.3);
+}
+
+/* Estilo para Vencido/Erro (Vermelho) */
+.status-error {
+    background-color: rgba(231, 76, 60, 0.2);
+    color: #ff6b6b;
+    border: 1px solid rgba(231, 76, 60, 0.3);
+}
+
+/* Estilo para Neutro/Vazio (Cinza) */
+.status-null {
+    background-color: rgba(255, 255, 255, 0.05);
+    color: #888;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* --- CUSTOM SCROLLBAR (Para ficar bonito no Chrome/Webview) --- */
+.table-container::-webkit-scrollbar {
+    width: 8px;
+}
+.table-container::-webkit-scrollbar-track {
+    background: #1e1e2f; 
+}
+.table-container::-webkit-scrollbar-thumb {
+    background: #444466; 
+    border-radius: 4px;
+}
+.table-container::-webkit-scrollbar-thumb:hover {
+    background: var(--color-btn); 
+}
+
+.emp-certs p {
+    margin-top: 40px;
+    
+}
+
+.emp-certs .mod_emp {
+    margin-bottom: 70px
+    
+}
+
+.btn{
+    border: none;
+    background-color: var(--color-btn);
+    padding: 20px;
+    border-radius: 10px;
+}

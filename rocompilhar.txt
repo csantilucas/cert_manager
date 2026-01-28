@@ -1,0 +1,6 @@
+#recriar .spec
+pyinstaller --onefile py_view/\init_windows.py
+
+
+#recompilar .exe
+pyinstaller init_windows.spec
