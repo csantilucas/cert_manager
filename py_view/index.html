@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="install.css">
     <link rel="stylesheet" href="config.css">
     <link rel="stylesheet" href="menu.css">
+    <link rel="stylesheet" href="convert.css">
 
 
 </head>
@@ -85,6 +86,27 @@
                 </tbody>
             </table>
 
+        </div>
+
+        <div class="card-conversor" id="card-conversor" style="display: none;">
+            <h3>Conversor de PFX para PEM</h3>
+
+            <div class="form-group">
+                <label>Arquivo PFX:</label>
+                <div class="row-input">
+                    <input type="text" id="input_caminho_pfx" placeholder="Nenhum arquivo selecionado..." readonly>
+                    <button id="btnBuscarPfx" class="btn-secondary">📂 Procurar</button>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Senha do Certificado:</label>
+                <input type="password" id="input_senha_pfx" placeholder="Digite a senha...">
+            </div>
+
+            <button id="btnConverterPfx" class="btn-primary"> Gerar Arquivos .PEM</button>
+
+            <p id="status_conversao" style="margin-top: 10px; font-weight: bold;"></p>
         </div>
 
         <div class="all">

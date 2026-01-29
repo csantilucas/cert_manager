@@ -111,7 +111,6 @@ class certs:
             return {"success": True, "mensagem": f"Removido do usuário: {stdout}"}
         else:
             return {"success": False, "erro": "Não foi possível remover do usuário"}
-
     @staticmethod
     def delete_cert_machine(numero_serie, store="MY"):
         """Remove certificado do Machine Store"""
@@ -130,8 +129,6 @@ class certs:
             return {"success": True, "mensagem": f"Removido da máquina: {stdout}"}
         else:
             return {"success": False, "erro": "Não foi possível remover da máquina (verifique permissões de administrador)"}
-
-
     @staticmethod
     def install_cert_file(caminho_arquivo: str):
         if not caminho_arquivo:

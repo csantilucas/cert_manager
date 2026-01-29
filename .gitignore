@@ -1,0 +1,19 @@
+# --- Segurança / Certificados ---
+# Ignorar a pasta especifica
+certs/
+certificados/
+
+# Ignorar arquivos de certificado em qualquer lugar do projeto
+*.pfx
+*.pem
+*.key
+*.crt
+*.cer
+*.p12
+*.der
+
+# --- Python / Ambiente (Recomendado) ---
+__pycache__/
+.venv/
+.env
+*.log

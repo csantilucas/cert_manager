@@ -9,6 +9,8 @@ def connect_database(server, instancia,user, password):
     f"UID={user};"
     f"PWD={password};"
     "Trusted_Connection=no;"
+    "TrustServerCertificate=yes;"
+    
     )
     try:
         connect = pyodbc.connect(data_connect)

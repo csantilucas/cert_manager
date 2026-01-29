@@ -6,6 +6,7 @@ import os
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 from logic.list_cert import certs as lc
 from sql_connect.connect import connect_database, ddl
+from logic.convert_pem import convert_cert_toPem
 
 
 class Api:
@@ -69,6 +70,21 @@ class Api:
         print(">>> Caminho retornado:", caminho)
         return caminho[0] if caminho else None
     
+    def caminho_convert_cert(self):
+        caminho = window.create_file_dialog(
+            webview.OPEN_DIALOG,
+            allow_multiple=False,
+            file_types=['Certificados (*.pfx)']
+        )
+        print(">>> Caminho retornado:", caminho)
+        return caminho[0] if caminho else None
+        
+    def convert_cert(self,caminho,senha):
+        if not caminho :
+            return {"sucesso": False, "erro": "Nenhum caminho selecionado"}
+        
+        # CORREÇÃO: Adicionei o 'return' aqui para mandar a resposta pro JS
+        return convert_cert_toPem(caminho, senha)
     
 
 

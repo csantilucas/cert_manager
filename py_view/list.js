@@ -1,10 +1,11 @@
 import { connect_sql } from './config.js';
+import { convert_cert } from './convert.js';
 import { load_base, load_cert_bd, load_cert_emp, load_emp } from './emp.js';
 import { mostrarInstalacao } from './install.js';
 
 function mostrarSecao(secaoId) {
     // Lista com os IDs de TODAS as suas telas (divs)
-    const telas = ['search', 'install', 'emp-certs'];
+    const telas = ['search', 'install', 'card-conversor', 'emp-certs'];
 
     telas.forEach(id => {
         const elemento = document.getElementById(id);
@@ -17,6 +18,31 @@ function mostrarSecao(secaoId) {
 
 window.addEventListener('DOMContentLoaded', function () {
 
+    // 1. CONFIGURAÇÃO DO CONVERSOR (Adiciona os eventos nos botões UMA ÚNICA VEZ)
+    const btnBuscarPfx = document.getElementById("btnBuscarPfx");
+    const btnConverterPfx = document.getElementById("btnConverterPfx");
+
+    // Botão Procurar Arquivo
+    if (btnBuscarPfx) {
+        btnBuscarPfx.addEventListener("click", async () => {
+            const inputCaminho = document.getElementById("input_caminho_pfx");
+            // Chama o Python
+            const caminhoRetornado = await window.pywebview.api.caminho_convert_cert();
+            if (caminhoRetornado) {
+                inputCaminho.value = caminhoRetornado;
+            }
+        });
+    }
+
+    // Botão Converter (Gerar PEM)
+    if (btnConverterPfx) {
+        btnConverterPfx.addEventListener("click", () => {
+            // Chama a função de conversão quando clica no botão, NÃO no menu
+            convert_cert();
+        });
+    }
+
+    // ------------------------------------------------------------------
     // buscar empresa 
     const selectBases = document.getElementById("bases");
     if (selectBases) {
@@ -24,11 +50,11 @@ window.addEventListener('DOMContentLoaded', function () {
             console.log("Banco mudou, carregando empresas...");
             await load_emp();
             await load_cert_emp()
-            
+
         });
     }
 
-    
+
     //-------------------------------------------------------------------------------------
 
     const menus = document.querySelectorAll('.title_menu');
@@ -50,14 +76,17 @@ window.addEventListener('DOMContentLoaded', function () {
 
     if (menus[2]) {
         menus[2].addEventListener('click', () => {
-            alert("Função de converter ainda não implementada");
+            mostrarSecao('card-conversor')
+            mostrarCerts();
+            convert_cert();
+
         });
     }
 
     if (menus[3]) {
         menus[3].addEventListener('click', () => {
-            
-            
+
+
             mostrarSecao('emp-certs');
             load_base();
             load_cert_bd()

@@ -1,0 +1,132 @@
+:root {
+    /* Mantendo as mesmas variáveis para garantir consistência */
+    --color-bg-dark: #1e1e2f;
+    --color-bg-light: #f5f7fa;
+    --color-primary: #ffffff;
+    --color-primary-hover: #9b59b6; /* Roxo */
+    --color-danger: #ff4d4f;
+    --color-border: rgba(255, 255, 255, 0.2);
+    --color-text-light: #e0e0e0;
+}
+
+/* Container principal (Mesmo estilo do .install) */
+.card-conversor {
+    background: var(--color-bg-dark);
+    border-radius: 12px;
+    padding: 30px;
+    width: 400px;
+    margin: 40px auto;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+    color: var(--color-text-light);
+    font-family: 'Segoe UI', Arial, sans-serif;
+    transition: transform 0.3s ease;
+}
+
+.card-conversor:hover {
+    transform: translateY(-4px);
+}
+
+/* Títulos */
+.card-conversor h3 {
+    margin: 0 0 20px 0;
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--color-primary);
+    text-align: center;
+}
+
+/* Agrupamento de inputs */
+.form-group {
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form-group label {
+    font-size: 14px;
+    color: var(--color-text-light);
+    opacity: 0.9;
+}
+
+/* Linha para o input de busca + botão */
+.row-input {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+}
+
+/* Estilo dos Inputs (Texto e Senha) - Padrão Translúcido */
+.card-conversor input[type="text"], 
+.card-conversor input[type="password"] {
+    padding: 12px;
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 0.05); /* Fundo translúcido */
+    color: var(--color-text-light);
+    outline: none;
+    transition: border-color 0.3s ease, background-color 0.3s ease;
+    width: 100%;
+    font-size: 14px;
+}
+
+/* Input readonly (caminho do arquivo) */
+.card-conversor input[readonly] {
+    background-color: rgba(0, 0, 0, 0.2); /* Um pouco mais escuro para indicar leitura */
+    cursor: default;
+}
+
+.card-conversor input:focus {
+    border-color: var(--color-primary-hover);
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Botões (Padrão Roxo/Primary Hover) */
+.card-conversor button {
+    background: var(--color-primary-hover);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 20px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.card-conversor button:hover {
+    background: linear-gradient(135deg, var(--color-primary-hover), #7d3c98);
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(155, 89, 182, 0.4);
+}
+
+/* Botão Secundário (Procurar) - Um pouco mais discreto */
+#btnBuscarPfx {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid var(--color-border);
+    white-space: nowrap; /* Impede quebra de linha */
+}
+
+#btnBuscarPfx:hover {
+    background: var(--color-primary-hover);
+    border-color: var(--color-primary-hover);
+}
+
+/* Botão Principal (Converter) - Largura total */
+#btnConverterPfx {
+    width: 100%;
+    margin-top: 10px;
+    padding: 12px;
+}
+
+/* Resultado / Status */
+#status_conversao {
+    margin-top: 20px;
+    padding: 12px;
+    border-radius: 8px;
+    font-size: 14px;
+    text-align: center;
+    background-color: rgba(0,0,0,0.2); /* Fundo padrão neutro */
+    display: block;
+    min-height: 20px;
+}
