@@ -1,0 +1,233 @@
+/* ============================================================
+   1. DASHBOARD DE ESTATÍSTICAS (Menor e Compacto)
+   ============================================================ */
+
+/* Container Grid */
+.cards-container {
+    display: grid;
+    /* Reduzi o tamanho mínimo do card para 160px */
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 15px; /* Menos espaço entre os cards */
+    margin: 15px 0 25px 0;
+    width: 100%;
+}
+
+/* Título */
+.bloco-titulo h2 {
+    font-size: 1.2rem; /* Fonte menor */
+    font-weight: 300;
+    color: var(--color-primary);
+    margin-bottom: 15px;
+    border-bottom: 1px solid var(--color-border);
+    padding-bottom: 8px;
+    letter-spacing: 0.5px;
+}
+
+/* Card de Estatística */
+.bloco-total {
+    background: linear-gradient(90deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0) 100%);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    
+    border: 1px solid var(--color-border);
+    border-radius: 12px; /* Borda menos arredondada */
+    padding: 15px; /* Reduzi bastante o padding interno */
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    overflow: hidden;
+    min-height: 100px; /* Altura mínima menor */
+    text-transform: lowercase;
+}
+
+.bloco-total::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 2px;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.5), transparent);
+    opacity: 0.5;
+}
+
+.bloco-total:hover {
+    transform: translateY(-5px); /* Movimento mais sutil */
+    background-color: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Texto Descritivo */
+.bloco-total p {
+    margin: 0;
+    font-size: 0.7rem; /* Fonte menor */
+    color: var(--color-text-light);
+    opacity: 0.7;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    margin-bottom: 5px;
+}
+
+/* Número Grande */
+.bloco-total h3 {
+    margin: 0;
+    font-size: 2rem; /* Reduzi de 3rem para 2rem */
+    font-weight: 700;
+    color: var(--color-primary);
+    line-height: 1.1;
+}
+
+/* Cores Específicas */
+.cards-container .bloco-total:nth-child(1):hover { border-bottom: 2px solid #1d8cf8; }
+.cards-container .bloco-total:nth-child(2) h3 { color: var(--color-danger); } 
+.cards-container .bloco-total:nth-child(2):hover { border-bottom: 2px solid var(--color-danger); }
+.cards-container .bloco-total:nth-child(3) h3 { color: var(--color-success); } 
+.cards-container .bloco-total:nth-child(3):hover { border-bottom: 2px solid var(--color-success); }
+.cards-container .bloco-total:nth-child(4) h3 { color: var(--color-warning); } 
+.cards-container .bloco-total:nth-child(4):hover { border-bottom: 2px solid var(--color-warning); }
+
+
+/* ============================================================
+   2. LISTA DE CERTIFICADOS (Compacta)
+   ============================================================ */
+
+/* Card do Certificado */
+.cert {
+
+    background: linear-gradient(90deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0) 100%);
+    
+    border: 1px solid var(--color-border);
+    border-radius: 8px; /* Raio menor */
+    padding: 10px 15px; /* Padding bem menor para ficar fino */
+    margin-bottom: 8px; /* Menos espaço entre os itens */
+    transition: all 0.2s ease;
+    position: relative;
+}
+
+.cert:hover {
+    background-color: rgba(255, 255, 255, 0.06);
+    transform: translateX(3px) scale(1.005);
+    border-color: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.cert:hover::after {
+    content: '';
+    position: absolute;
+    left: 0; top: 5px; bottom: 5px;
+    width: 3px;
+    background-color: var(--color-primary-hover);
+    border-radius: 0 3px 3px 0;
+}
+
+/* Grid de Dados */
+.cert .top {
+    display: grid;
+    grid-template-columns: 2fr 1.5fr 1fr 1fr 100px; /* Coluna de status menor */
+    gap: 10px; /* Gap menor */
+    align-items: center;
+    margin-bottom: 8px; /* Aproxima a linha de baixo */
+}
+
+/* Textos das Colunas */
+.cert .valor {
+    font-size: 0.8rem; /* Fonte geral reduzida */
+    color: var(--color-text-light);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-weight: 500;
+    text-transform: lowercase;
+}
+
+/* Destaque para o Nome (Primeira Coluna) */
+.cert .top .valor:nth-child(1) {
+    color: var(--color-primary);
+    font-weight: 600;
+    font-size: 0.9rem; /* Nome um pouco maior, mas ainda compacto */
+    letter-spacing: 0.2px;
+    text-transform: lowercase;
+}
+
+/* Rodapé do Card */
+.cert .bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    padding-top: 6px; /* Padding menor */
+    margin-top: 4px;
+}
+
+.cert .icon {
+    width: 16px; /* Ícone menor */
+    opacity: 0.6;
+    filter: invert(1);
+}
+.cert:hover .icon { opacity: 1; }
+
+/* Botão Excluir Compacto */
+.cert .excluir {
+    background: transparent;
+    border: 1px solid var(--color-danger);
+    color: var(--color-danger);
+    padding: 4px 12px; /* Botão menor */
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.65rem; /* Fonte do botão menor */
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+}
+
+.cert .excluir:hover {
+    background-color: var(--color-danger);
+    color: #fff;
+    box-shadow: 0 0 10px rgba(255, 77, 79, 0.6);
+    transform: translateY(-1px);
+}
+
+/* --- Badges de Status (Pequenos) --- */
+.valor.valido, .valor.expirado, .valor.a_expirar {
+    text-align: center;
+    border-radius: 10px;
+    padding: 2px 0; /* Pílula mais fina */
+    font-size: 0.65rem; /* Letra pequena */
+    font-weight: 700;
+    text-transform: uppercase;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.valor.valido {
+    background-color: rgba(0, 200, 150, 0.15);
+    color: var(--color-success);
+    border: 1px solid rgba(0, 200, 150, 0.742);
+}
+
+.valor.expirado {
+    background-color: rgba(255, 77, 79, 0.15);
+    color: var(--color-danger);
+    border: 1px solid rgba(255, 77, 79, 0.3);
+}
+
+.valor.a_expirar {
+    background-color: rgba(255, 169, 64, 0.15);
+    color: var(--color-warning);
+    border: 1px solid rgba(255, 169, 64, 0.3);
+}
+
+/* Responsividade */
+@media (max-width: 992px) {
+    .cert .top {
+        grid-template-columns: 2fr 1fr 90px;
+    }
+    .cert .top .valor:nth-child(2),
+    .cert .top .valor:nth-child(3) {
+        display: none;
+    }
+}

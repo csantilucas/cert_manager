@@ -98,4 +98,4 @@ window = webview.create_window(
     width=1366,
     resizable=True
 )
-webview.start()
+webview.start(debug=True)
